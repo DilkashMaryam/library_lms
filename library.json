@@ -1,0 +1,42 @@
+[
+  {
+    "title": "python crash course",
+    "author": "Eric Matthes",
+    "publication_year": 2019,
+    "genre": "Programming",
+    "read_status": false,
+    "added_data": "2025-03-14 9:19:00"
+  },
+{
+    "title": "Clean Code",
+    "author": "Robert C. Martin",
+    "publication_year": 2008,
+    "genre": "Software Development",
+    "read_status": true,
+    "added_data": "2025-03-14 10:00:00"
+  },
+  {
+    "title": "The Pragmatic Programmer",
+    "author": "Andrew Hunt and David Thomas",
+    "publication_year": 1999,
+    "genre": "Software Development",
+    "read_status": false,
+    "added_data": "2025-03-14 11:30:00"
+  },
+  {
+    "title": "You Don't Know JS",
+    "author": "Kyle Simpson",
+    "publication_year": 2015,
+    "genre": "Programming",
+    "read_status": true,
+    "added_data": "2025-03-14 12:45:00"
+  },
+  {
+    "title": "The Mythical Man-Month",
+    "author": "Frederick P. Brooks Jr.",
+    "publication_year": 1975,
+    "genre": "Software Engineering",
+    "read_status": false,
+    "added_data": "2025-03-14 14:10:00"
+  }
+]
