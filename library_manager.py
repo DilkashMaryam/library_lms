@@ -198,12 +198,17 @@ def calculate_reading_stats():
     total_books = len(st.session_state.library)
 
     read_books = sum(1 for book in st.session_state.library if book.get('status', 'Unread').lower() == 'read')
+    percent_read = round((read_books / total_books) * 100) if total_books > 0 else 0
 
     genre_counts = {}
     author_counts = {}
     decade_counts = {}
 
     for book in st.session_state.library:
+        if 'status' not in book:
+            book['status'] = "unread"  # Default value
+
+        save_library()
 
         #genre counts
         if book['genre'] in genre_counts:
