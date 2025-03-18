@@ -192,9 +192,12 @@ def search_book(search_query, search_type):
 
 #calculate reading statistics
 def calculate_reading_stats():
+    if "library" not in st.session_state:
+        return {"total_books": 0, "read_books": 0, "unread_books": 0}
+
     total_books = len(st.session_state.library)
-    read_books = sum(1 for book in st.session_state.library if book['status'] == 'read')
-    percent_read = round((read_books / total_books) * 100) if total_books > 0 else 0
+
+    read_books = sum(1 for book in st.session_state.library if book.get('status', 'Unread').lower() == 'read')
 
     genre_counts = {}
     author_counts = {}
