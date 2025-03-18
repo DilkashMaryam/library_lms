@@ -158,7 +158,7 @@ def add_book(title, author, published_year, status, genre):
         'title': title,
         'author': author,
         'published_year': published_year,
-        'status': status,
+        'status': status if status in ["Read", "Unread"] else "Unread",
         'genre': genre,
         'added_date': datetime.datetime.now().strftime('%Y-%m-%d'),
     }
@@ -373,10 +373,10 @@ elif st.session_state.current_view == "library":
                             st.rerun()
 
                 with col2:
-                    new_status = not book['status']
-                    status_label = "Mark as read" if not book['status'] else "Mark as unread"
+                    new_status = not book['status', 'Unread']
+                    status_label = "Mark as read" if book.get('status', 'Unread') == 'Unread' else "Mark as unread"
                     if st.button(status_label, key=f"status_{i}", use_container_width=True):
-                        st.session_state.library[i]['read_status'] = new_status
+                        st.session_state.library[i]['status'] = "Read" if new_status else "Unread"
                         save_library()
                         st.rerun()
 
