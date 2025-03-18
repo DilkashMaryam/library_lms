@@ -254,8 +254,8 @@ def create_visualizations(stats):
         #genre bar chart
         if stats['genre_counts']:
             genres_df = pd.DataFrame(
-                'Genre' : list(stats['genre_counts'].keys()),
-                'Count' : list(stats['genre_counts'].values())
+                list(zip(stats['genre_counts'].keys(), stats['genre_counts'].values())),
+                columns=['Genre', 'Count']
             )
             fig_genre = px.bar(
                 genres_df,
@@ -274,8 +274,9 @@ def create_visualizations(stats):
 
     if stats['decade_counts']:
         decade_df = pd.DataFrame(
-            'Decade' : [f"{decade}s" for decade in stats['decade_counts'].keys()],
-            'Count' : list(stats['decade_counts'].values())
+            list(zip([f"{decade}s" for decade in stats['decade_counts'].keys()], 
+                    stats['decade_counts'].values())),
+            columns=['Decade', 'Count']
         )
         fig_decade = px.line(
             decade_df,
@@ -298,7 +299,7 @@ st.sidebar.markdown("<h1 style='text-align: center;'>Navigation</h1>", unsafe_al
 lottie_book = load_lottieurl("https://assets.lottielibrary.com/l/book.json")
 if lottie_book:
     with st.sidebar:
-        st.lottie(lottie_book, height=200, key='book_animation')
+        st_lottie(lottie_book, height=200, key='book_animation')
 
 nav_options = st.sidebar.radio("Select an option:",
     ["View Library", "Add Book", "Search Books", "Library Statistics"])
@@ -321,7 +322,7 @@ if st.session_state.current_view == "add_book":
         with col1:
             title = st.text_input("Title", placeholder="Enter the book title", max_chars=100)
             author = st.text_input("Author", placeholder="Enter the author's name", max_chars=100)
-            published_year = st.number_input("Published Year", min_value=1000, max_value=datetime.now().year, step=1, value=2023)
+            published_year = st.number_input("Published Year", min_value=1000, max_value=datetime.datetime.now().year, step=1, value=2023)
 
 
     with col2:
@@ -426,11 +427,11 @@ elif st.session_state.current_view == "statistics":
         stats = calculate_reading_stats()
         col1, col2, col3 = st.columns(3)
         with col1:
-            st.matric("Total Books", stats['total_books'])
+            st.metric("Total Books", stats['total_books'])
         with col2:
-            st.matric("Books Read", stats['read_books'])
+            st.metric("Books Read", stats['read_books'])
         with col3:
-            st.matric("Percentage Read", f"{stats['percent_read'] :.1f}%")
+            st.metric("Percentage Read", f"{stats['percent_read'] :.1f}%")
 
         create_visualizations(stats)
 
@@ -444,4 +445,3 @@ st.markdown("---")
 st.markdown("Copyright @ 2025 Personal Library Manager. All rights reserved.", unsafe_allow_html=True)
 
                 
-
