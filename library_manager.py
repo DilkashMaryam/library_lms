@@ -358,7 +358,7 @@ elif st.session_state.current_view == "library":
                 <div class='book-card'>
                     <h3 class='book-card-title'>{book['title']}</h3>
                     <p class='book-card-author'>{book['author']}</p>
-                    <p class='book-card-year'>{book['published_year']}</p>
+                    <p class='book-card-year'>{book.get('published_year', 'N/A')}</p>
                     <p class='book-card-genre'>{book['genre']}</p>
                     <p><span class='{"read-badge" if book ["read_status"] else "unread-badge"}'>{
                         "Read" if book["read_status"] else "Unread"
