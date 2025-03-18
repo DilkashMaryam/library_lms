@@ -373,7 +373,7 @@ elif st.session_state.current_view == "library":
                             st.rerun()
 
                 with col2:
-                    new_status = not book['status', 'Unread']
+                    new_status = book['status', 'Unread']
                     status_label = "Mark as read" if book.get('status', 'Unread') == 'Unread' else "Mark as unread"
                     if st.button(status_label, key=f"status_{i}", use_container_width=True):
                         st.session_state.library[i]['status'] = "Read" if new_status else "Unread"
