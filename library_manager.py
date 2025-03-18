@@ -326,7 +326,7 @@ if st.session_state.current_view == "add_book":
 
 
     with col2:
-        status = st.selectbox("Status", ["Read", "Unread"], horizontal=True)
+        status = st.selectbox("Status", ["Read", "Unread"])
         genre = st.selectbox("Genre", [
             "Fiction", "Non-Fiction", "Biography", "Science Fiction", 
             "Fantasy", "Mystery", "Romance", "Thriller", "Horror", 
