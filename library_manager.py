@@ -251,7 +251,7 @@ def create_visualizations(stats):
             labels=['Read', 'Unread'],
             values=[stats['read_books'], stats['total_books'] - stats['read_books']],
             hole=.4,
-            marker_color=['#008000', '#FF0000']
+            marker_colors=['#008000', '#FF0000']
         )])
         fig_read_status.update_layout(
             title='Read Status Distribution',
