@@ -224,7 +224,7 @@ def calculate_reading_stats():
             author_counts[book['author']] = 1
 
         #decade counts
-        year = (book.get('published_year') // 10) * 10
+        year = (book.get('published_year', 0)) * 10
         decade = str(year)[:3] + '0s'
         if decade in decade_counts:
             decade_counts[decade] += 1
