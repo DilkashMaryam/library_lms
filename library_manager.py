@@ -322,7 +322,7 @@ if st.session_state.current_view == "add_book":
         with col1:
             title = st.text_input("Title", placeholder="Enter the book title", max_chars=100)
             author = st.text_input("Author", placeholder="Enter the author's name", max_chars=100)
-            published_year = st.number_input("Published Year", min_value=1000, max_value=datetime.datetime.now().year, step=1, value=2023)
+            year_input = st.number_input("Published Year", min_value=1000, max_value=datetime.datetime.now().year, step=1, value=2023)
 
 
     with col2:
@@ -337,8 +337,8 @@ if st.session_state.current_view == "add_book":
     submit_button = st.form_submit_button(label="Add Book")
 
     if submit_button:
-        if title and author and published_year:
-            add_book(title, author, published_year, read_bool, genre)
+        if title and author and year_input:
+            add_book(title, author, year_input, read_bool, genre)
             st.success("Book added successfully!")
 
     if st.session_state.book_added:
@@ -399,7 +399,7 @@ elif st.session_state.current_view == "search":
 
     if hasattr(st.session_state, 'search_results'):
         if st.session_state.search_results:
-            st.markdown("<h2> Found {len(st.session_state.search_results)} results:</h2>", unsafe_allow_html=True)
+            st.markdown(f"<h2>Found {len(st.session_state.search_results)} results:</h2>", unsafe_allow_html=True)
 
             for i, book in enumerate(st.session_state.search_results):
                 st.markdown(f"""
