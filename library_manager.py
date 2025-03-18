@@ -334,7 +334,6 @@ if st.session_state.current_view == "add_book":
 
         submit_button = st.form_submit_button("Add Book")
         read_bool = status == "Read"
-    submit_button = st.form_submit_button(label="Add Book")
 
     if submit_button:
         if title and author and year_input:
@@ -369,13 +368,13 @@ elif st.session_state.current_view == "library":
 
                 col1, col2 = st.columns(2)
                 with col1:
-                    if st.button(f"Remove Book", key=f"remove_book_{i}", use_container_width=True):
+                    if st.button(f"Remove Book", key=f"remove_book_{i}"):
                         if remove_book(i):
                             st.rerun()
 
                 with col2:
-                    new_status = not book['read_status']
-                    status_label = "Mark as read" if not book['read_status'] else "Mark as unread"
+                    new_status = not book['status']
+                    status_label = "Mark as read" if not book['status'] else "Mark as unread"
                     if st.button(status_label, key=f"status_{i}", use_container_width=True):
                         st.session_state.library[i]['read_status'] = new_status
                         save_library()
